@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package camera;
+option go_package ='./pkg/proto/camera';
+
+service CameraService {
+  rpc TakePhoto (Empty) returns (Photo) {}
+}
+
+message Empty {}
+
+message Photo {
+  bytes image = 1;
+}

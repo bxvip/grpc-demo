@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package pay;
+option go_package ='./pkg/proto/pay';
+
+service PaymentService {
+  rpc GetPaymentInfo(PaymentRequest) returns (PaymentInfo) {}
+  rpc Pay(PaymentInfo) returns (PaymentResult) {}
+}
+
+
+message PaymentInfo {
+  string userId = 1;
+  string orderId = 2;
+  float amount = 3;
+  string description = 4;
+}
+
+message PaymentRequest {
+  string userId = 1;
+  string orderId = 2;
+}
+
+message PaymentResult {
+  bool success = 1;
+  string message = 2;
+}
